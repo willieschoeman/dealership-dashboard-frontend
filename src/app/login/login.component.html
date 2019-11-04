@@ -1,0 +1,37 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div *ngIf="!isLoading">
+  <div class="fill">
+    <div>
+      <h1>Dealership Management Console</h1>
+      <div class="login-form">
+        <h2>Log In</h2>
+        <form [formGroup]="userForm" class="login-container" (ngSubmit)="login()">
+
+          <div class="form-group">
+            <label class="form-control-label">Username</label>
+            <input type="text" placeholder="Enter your email" formControlName="username" class="form-control"
+              [ngClass]="{ 'is-invalid': isSubmitted && formControls.username.errors }">
+            <div *ngIf="isSubmitted && formControls.username.errors" class="invalid-feedback">
+              <div *ngIf="formControls.username.errors.required">Username is required!</div>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{ 'has-danger': isSubmitted && formControls.password.errors }">
+            <label class="form-control-label">Enter Your Password</label>
+            <input type="password" placeholder="Enter your password" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': isSubmitted && formControls.password.errors }">
+            <div *ngIf="isSubmitted && formControls.password.errors" class="invalid-feedback">
+              <div *ngIf="formControls.password.errors.required">Password is required!</div>
+            </div>
+          </div>
+          <p>
+            <input type="submit" value="Log In" class="btn btn-primary btn-lg">
+          </p>
+          <div class="clearfix">
+            <p class="error-mgs">{{errorMgs}}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

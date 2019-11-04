@@ -1,0 +1,107 @@
+.col-sm-6 {
+    float: left;
+    padding: 10px;
+}
+
+fa {
+    padding: 10px;
+}
+
+.submit-section button {
+    min-width: 170px;
+}
+
+.edit-form {
+    box-shadow: 1px 1px 10px;
+}
+
+.edit-form hr {
+    width: 90%;
+}
+
+.form-group {
+    min-height: 450px;
+}
+
+.back-section button {
+    padding-right: 30px;
+}
+
+.accessories-holder {
+    padding: 10px;
+    width: 100%;
+    display: table;
+}
+
+.accessories-holder input {
+    margin-bottom: .5rem;
+}
+
+.accessories-holder button {
+    margin: 10px;
+}
+
+.image-holder {
+    padding: 15px;
+}
+
+textarea {
+    height: 100px;
+    font-weight: 200;
+}
+
+.image-holder input:hover {
+    cursor: pointer;
+}
+
+.image-viewer {
+    text-align: center;
+}
+
+.image-viewer p {
+    font-weight: 200;
+    color: red;
+    padding-top: 10px
+}
+
+.image-viewer img{
+    width:  150px;
+    height: 150px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px;
+    box-shadow: 1px 1px 11px;
+    transition: 0.4s;
+}
+
+.img-wrap {
+    position: relative;
+}
+
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.image-viewer img:hover {
+    transform: scale(1.4);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.container {
+    padding-bottom: 100px;
+}
+
+.submit-section {
+    text-align: center;
+    padding: 15px;
+}
+
+.error-mgs {
+    font-size: 100%;
+    padding-bottom: 15px;
+    text-align: center;
+}

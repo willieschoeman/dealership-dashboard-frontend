@@ -1,0 +1,122 @@
+fa {
+    color: #fff;
+}
+
+.stock-container .card{
+    border: unset;
+}
+
+.logout {
+    text-align: center;
+    margin: auto;
+    
+}
+
+.logout button {
+    float: right;
+    width: 200px;
+}
+
+.container {
+    padding-bottom: 100px;
+}
+
+.stock-holder {
+    height: 490px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 12px 1px;
+}
+
+.stock-holder img {
+    padding: 25px;
+    transition: 0.3s;
+}
+
+.stock-holder img:hover {
+    transform: scale(1.03);
+}
+
+.stock-holder a:hover {
+    cursor: pointer;
+}
+
+.bubble {
+    width: 100px;
+    height: 100px;
+    background: #2FA4E7;
+    color: #fff;
+    box-shadow: 3px 3px 22px;
+    border-radius: 100%;
+    z-index: 900;
+    position: fixed;
+    bottom: 10%;
+    right: 35px;
+    cursor: pointer;
+}
+
+ul li {
+    font-weight: 200;
+}
+
+.bubble-inside {
+    text-align: center;
+    margin: auto;
+    padding-top: 20px;
+    color: #fff;
+}
+
+.bubble-inside span {
+    font-size: 10px;
+    font-weight: 100;
+}
+
+.search {
+    margin: 10px;
+    padding: 10px;
+    border-top: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.search label {
+    font-size: 26px;
+}
+
+.search input {
+    box-shadow: 1px 1px 2px inset;
+}
+
+.action-item {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px;
+    display: inline-block;
+    background-color: #2FA4E7;
+    margin: 5px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.action-holder {
+    position: absolute;
+    bottom: 0px;
+    padding: 0px 0px 10px 10px
+}
+
+.action-holder a:hover {
+    transform: scale(1.1);
+}
+
+@media only screen and (max-width: 990px) {
+    .logout {
+        text-align: center;
+        margin: auto;
+        top: 0px;
+    }
+    
+    .logout button {
+        margin: 10px;
+        float: unset;
+    }
+}

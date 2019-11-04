@@ -1,0 +1,10 @@
+{
+    "/authenticate": {
+        "target": "http://localhost:3000",
+        "secure": false
+    },
+    "/dealer-management": {
+        "target": "http://localhost:3000",
+        "secure": false
+    }
+}

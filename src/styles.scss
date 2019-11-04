@@ -1,0 +1,25 @@
+input, h1, h2, h3, h4, label, button {
+    font-weight: 200 !important;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+    padding: 10px;
+}
+
+.error-mgs {
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.modal {
+    font-weight: 200;
+}
+
+.form-group label {
+    font-weight: 400 !important;
+}
+
+::placeholder {
+    color: #bababa !important;
+}

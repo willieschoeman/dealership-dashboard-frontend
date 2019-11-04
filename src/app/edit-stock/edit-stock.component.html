@@ -1,0 +1,133 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div *ngIf="!isLoading">
+  <div class="container">
+    <h1>Edit Stock</h1>
+
+    <div class="back-section">
+      <button type="button" class="btn btn-danger" (click)="back()">
+        <fa name="arrow-left" size="lg"></fa>Back
+      </button>
+    </div>
+
+    <hr/>
+
+    <div class="edit-form">
+      <div class="form-group">
+        <div class="col-sm-6">
+          <label class="form-control-label">Registration No</label>
+          <input type="text" placeholder="HFJ751GP" max-length="8" class="form-control" [(ngModel)]="stock.registrationNo">
+        </div>
+
+        <div class="col-sm-6">
+          <label class="form-control-label">Make</label>
+          <input type="text" placeholder="Volkswagen" class="form-control" [(ngModel)]="stock.make">
+        </div>
+        <div class="col-sm-6">
+          <label class="form-control-label">Model</label>
+          <input type="text" placeholder="Golf" class="form-control" [(ngModel)]="stock.model">
+        </div>
+        <div class="col-sm-6">
+          <label class="form-control-label">Model Year</label>
+          <input type="text" maxlength="4" placeholder="2019" class="form-control" [(ngModel)]="stock.modelYear">
+        </div>
+
+        <div class="col-sm-6">
+          <label class="form-control-label">Kilometer Reading</label>
+          <input type="number" placeholder="123000" class="form-control" [(ngModel)]="stock.kms">
+        </div>
+        <div class="col-sm-6">
+          <label class="form-control-label">Colour</label>
+          <select class="form-control" [(ngModel)]="stock.colour" required>
+              <option selected disabled value="undefined">Choose Colour</option>
+              <option>White</option>
+              <option>Red</option>
+              <option>Yellow</option>
+              <option>Blue</option>
+              <option>Black</option>
+            </select>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="form-control-label">VIN</label>
+          <input type="text" placeholder="SX32YYGPLO6751VCTRG" class="form-control" [(ngModel)]="stock.vin">
+        </div>
+        <div class="col-sm-6">
+          <label class="form-control-label">Retail Price</label>
+          <input type="number" placeholder="120000" class="form-control" [(ngModel)]="stock.retailPrice">
+        </div>
+        <div class="col-sm-6">
+          <label class="form-control-label">Cost Price</label>
+          <input type="number" placeholder="100000" class="form-control" [(ngModel)]="stock.costPrice">
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-3">
+            <label class="form-control-label">Created</label>
+            <input type="text" placeholder="2010-01-01" class="form-control" [(ngModel)]="stock.created" disabled>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-3">
+            <label class="form-control-label">Last Modified</label>
+            <input type="text" placeholder="2010-01-01" class="form-control" [(ngModel)]="stock.updated" disabled>
+        </div>
+
+        <div class="accessories-holder">
+          <label class="form-control-label">Accessories</label>
+          <br/>
+          <button class="btn btn-secondary" (click)="addAccessories()">Add Accessories</button>
+          <br/>
+          <div *ngIf="stock.accessories.length != 0">
+            <div *ngFor="let accessory of stock.accessories; let i = index" class="col-sm-6 col-md-6 col-lg-4">
+              <label class="form-control-label">Accessory Item - {{i + 1}}</label>
+              <input type="text" placeholder="Name" class="form-control" [(ngModel)]="stock.accessories[i].name">
+              <textarea type="text" placeholder="Description" class="form-control" [(ngModel)]="stock.accessories[i].description"></textarea>
+              <button class="btn btn-danger" (click)="removeAccessories(i)">Remove Accessory {{i + 1}}</button>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+        <div class="image-holder">
+          <label class="form-control-label">Upload Images</label><br />
+          <input class="form-control-file" accept="image/*" id="custom-input" type="file" (change)="handleFiles($event)"
+            multiple>
+        </div>
+
+        <div class="image-viewer">
+          <p *ngIf="stock.images != 0 || images != 0">NOTE: Clicking an image will delete the image!</p>
+          <img *ngFor="let url of stock.images; let i = index" src="assets/images/{{url.location}}" (click)="deleteStockImage(i)" class="rounded mb-3" width="180">
+          <img *ngFor="let url of images; let i = index" [src]="url" (click)="deleteNewImage(i)" class="rounded mb-3" width="180">
+        </div>
+        <hr/>
+
+        <div class="submit-section">
+          <button class="btn btn-primary" (click)="updateStock()">Submit</button>
+        </div>
+
+      </div>
+
+      <p class="error-mgs">
+        {{editError}}
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Edit Modal Popup -->
+<ng-template #editModal>
+  <div class="modal-header">
+    <h4 *ngIf="!error" class="modal-title pull-left">Success</h4>
+    <h4 *ngIf="error" class="modal-title pull-left">Error</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="!error" class="modal-body">
+      Successfully updated a stock item.
+  </div>
+  <div *ngIf="error" class="modal-body">
+      Unable to update stock item. Please try again later!
+    </div>
+  <div class="modal-footer">
+    <button *ngIf="!error" type="button" class="btn btn-primary" (click)="hideModal()">Ok</button>
+    <button *ngIf="error" type="button" class="btn btn-danger" (click)="hideModal()">Ok</button>
+  </div>
+</ng-template>

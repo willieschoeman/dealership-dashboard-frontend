@@ -1,0 +1,71 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div *ngIf="!isLoading">
+  <div class="container">
+    <h1>Dealership Management Console</h1>
+
+    <a class="bubble" (click)="addStock()">
+      <div class="bubble-inside">
+        <fa name="plus" size="3x"></fa>
+        <br />
+        <span>Add Stock</span>
+      </div>
+    </a>
+
+    <div class="row search">
+      <div class="col-sm-12 col-md-8">
+        <label class="form-control-label">Search:</label>
+        <input type="text" placeholder="" class="form-control" [(ngModel)]="query" name="search">
+      </div>
+      <div class="col-sm-12 col-md-4 logout">
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="stock-container row">
+      <div *ngFor="let item of stock | search:'make,model,registrationNo':query" class="card col-sm-6 col-md-4 mt-4">
+        <div class="stock-holder">
+          <a (click)="editStock(item._id)"><img class="card-img-top" src="assets/images/{{item.images[0].location}}"
+              alt="Card image cap"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{item.make}} - {{item.model}}</h5>
+            <ul>
+              <li>Price: R{{item.retailPrice}}</li>
+              <li>KM's: {{item.kms}}</li>
+              <li>Registration: {{item.registrationNo}}</li>
+              <li>Colour: {{item.colour}}</li>
+            </ul>
+          </div>
+          <div class="action-holder">
+            <a class="action-item" (click)="editStock(item._id)">
+              <fa name="edit" size="2x"></fa>
+            </a>
+            <a class="action-item" (click)="deleteStock(item._id)">
+              <fa name="trash" size="2x"></fa>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Delete Modal Popup -->
+<ng-template #deleteModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirm Delete</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to delete this {{deleteMake}} {{deleteModel}}?
+    <p class="error-mgs">
+      {{deleteError}}
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirmDelete()">Confirm</button>
+    <button type="button" class="btn btn-secondary" (click)="hideModal()">Close</button>
+  </div>
+</ng-template>
